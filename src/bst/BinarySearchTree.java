@@ -125,20 +125,31 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	{
 		System.out.print (node + " ");
 		if (node.leftChild != null)
-		{	preOrderRecurse(node.leftChild);	
-			//System.out.println ("left");
-		}
+		{	preOrderRecurse(node.leftChild);	}
 		if (node.rightChild != null)
-		{	preOrderRecurse(node.rightChild);
-			//System.out.println ("left");
-		}
-		
+		{	preOrderRecurse(node.rightChild);	}
 	}
 	
 	//Traverse the tree in an preorder fashion but using a stack
 	//Print the current node first and then recurse on the children
 	public void preOrderStack() {
 		Stack<BSTNode<T>> pre = new Stack<BSTNode<T>>();
+		
+		BSTNode<T> current = root;
+		pre.add(current);
+		do
+		{
+			System.out.print(current + " ");
+			
+			if (current.rightChild != null)
+			{pre.add(current.rightChild);	}
+			
+			if (current.leftChild != null)
+			{pre.add(current.leftChild);	}		
+			
+			current = pre.pop();
+		}	while (!pre.empty());
+		
 		
 	}
 		
